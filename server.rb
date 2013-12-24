@@ -24,7 +24,7 @@ post "/execute" do
 			response = {:status => "error executing script: #{result[1].to_s.strip}"}.to_json
 		end
 	else
-		response = {:error => "no script provided"}.to_json
+		response = {:status => "no script provided"}.to_json
 	end
 
 	content_type :json
