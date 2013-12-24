@@ -15,7 +15,7 @@ post "/execute" do
 		script = params["script"]
 
 		result = Open3.capture3("osascript<<APPLESCRIPT
-			#{script}
+			#{URI.decode(script)}
 		APPLESCRIPT")
 
 		if result[0].to_s.strip == "AppleScript"
