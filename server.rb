@@ -18,13 +18,14 @@ post "/execute" do
 			#{URI.decode(script)}
 		APPLESCRIPT")
 
-		if result[0].to_s.strip == "AppleScript"
-			response = {:status => "ok"}.to_json
+		message = result[0].to_s.strip
+		unless message.empty? || message.nil?
+			response = {:status => "ok", :message => message}.to_json
 		else
-			response = {:status => "error executing script: #{result[1].to_s.strip}"}.to_json
+			response = {:status => "error", :message => "error executing script: #{result[1].to_s.strip}"}.to_json
 		end
 	else
-		response = {:status => "no script provided"}.to_json
+		response = {:status => "error", :message => "no script provided"}.to_json
 	end
 
 	content_type :json
