@@ -27,11 +27,11 @@ curl -X POST --data "script=tell%20application%20%22iTunes%22%0D%09activate%0Den
 If the execution was OK, you should get the following response:
 
 ```
-{"status":"ok"}
+{"status":"ok", "message": "AppleScript"}
 ```
 
 Otherwise (usually when there is a syntax error), you should receive an error message:
 
 ```
-{"status":"error executing script: 43:46: syntax error: Expected “tell”, etc. but found identifier. (-2741)"}
+{"status":"error", "message": "error executing script: 43:46: syntax error: Expected “tell”, etc. but found identifier. (-2741)"}
 ```
